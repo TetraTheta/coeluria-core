@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_netherite_scrap_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "coeluriacore:netherite_scrap_shard"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_netherite_scrap_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "coeluriacore:netherite_scrap"
+    ]
+  },
+  "sends_telemetry_event": false
+}

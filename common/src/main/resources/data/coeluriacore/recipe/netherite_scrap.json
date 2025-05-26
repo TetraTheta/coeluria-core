@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "coeluriacore",
+  "pattern": [
+    "DSD",
+    "SNS",
+    "DSD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:diamond_block"
+    },
+    "N": {
+      "item": "minecraft:nether_bricks"
+    },
+    "S": {
+      "item": "coeluriacore:netherite_scrap_shard"
+    }
+  },
+  "result": {
+    "id": "minecraft:netherite_scrap",
+    "count": 1
+  }
+}

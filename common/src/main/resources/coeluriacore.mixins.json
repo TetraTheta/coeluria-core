@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "io.github.tetratheta.coeluriacore.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "ChatScreenMixin"
+  ],
+  "mixins": [
+    "StringUtilMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
