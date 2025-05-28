@@ -9,7 +9,7 @@ public final class CoeluriaCore {
 
   public static void init() {
     // Write common init code here.
-    LOGGER.info("Hello, world!");
+    LOGGER.info("[CoeluriaCore] Hello, world!");
 
     ModItem.ITEMS.register();
     ModCreativeTab.TABS.register();
