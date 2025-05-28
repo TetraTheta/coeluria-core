@@ -181,3 +181,7 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,gradle,forgegradle,groovy,java,kotlin
+
+# Ignore .bat/.cmd file starts with @
+@*.bat
+@*.cmd

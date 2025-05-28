@@ -8,7 +8,7 @@ modId = "coeluriacore"
 version = "${version}"
 displayName = "CoeluriaCore"
 authors = "TetraTheta"
-description = "Personal mod that enhances Minecraft experience"
+description = "Small utility mod that (might) enhances game experience"
 logoFile = "assets/coeluriacore/icon.png"
 
 [[dependencies.coeluriacore]]

@@ -1,16 +1,35 @@
 plugins {
+  id 'java' // Without this, there is no 'build' task available!
   id 'dev.architectury.loom' version '1.10-SNAPSHOT' apply false
   id 'architectury-plugin' version '3.4-SNAPSHOT'
   id 'com.gradleup.shadow' version '8.3.6' apply false
 }
 
 architectury {
-  minecraft = project.minecraft_version
+  minecraft = rootProject.minecraft_version
 }
 
 allprojects {
   group = rootProject.maven_group
-  version = rootProject.mod_version
+  version = rootProject.mod_version + '+' + rootProject.minecraft_version
+}
+
+// Delete unnecessary copied JAR files
+tasks.named('build').configure {
+  dependsOn subprojects.collect { it.tasks.named('build') }
+
+  doLast {
+    def libsDir = rootProject.layout.buildDirectory.dir('libs').get().asFile
+    delete new File(libsDir, "${rootProject.archives_name}-${project.version}.jar").absolutePath
+    delete new File(libsDir, "${rootProject.archives_name}-common-${project.version}.jar").absolutePath
+  }
+}
+
+// Delete 'build' directory at the root when running 'clean' task
+tasks.named('clean').configure {
+  dependsOn subprojects.collect { it.tasks.named('clean') }
+
+  doLast { delete rootProject.layout.buildDirectory }
 }
 
 subprojects {
@@ -71,4 +90,15 @@ subprojects {
       // retrieving dependencies.
     }
   }
+
+  // Copy build output to root project build directory
+  tasks.register('copyToRoot', Copy) {
+    description = "Copy ${project.name} output into ${rootProject.layout.buildDirectory.dir('libs')}"
+    dependsOn tasks.named('build')
+    from(layout.buildDirectory.dir('libs')) {
+      include "${rootProject.archives_name}-${project.name}-${project.version}.jar"
+    }
+    into(rootProject.layout.buildDirectory.dir('libs'))
+  }
+  tasks.named('build') { finalizedBy tasks.named('copyToRoot') }
 }

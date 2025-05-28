@@ -3,7 +3,7 @@
   "id": "coeluriacore",
   "version": "${version}",
   "name": "CoeluriaCore",
-  "description": "Personal mod that enhances Minecraft experience",
+  "description": "Small utility mod that (might) enhances game experience",
   "authors": [
     "TetraTheta"
   ],
