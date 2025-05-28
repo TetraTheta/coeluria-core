@@ -3,6 +3,8 @@ plugins {
   id 'dev.architectury.loom' version '1.10-SNAPSHOT' apply false
   id 'architectury-plugin' version '3.4-SNAPSHOT'
   id 'com.gradleup.shadow' version '8.3.6' apply false
+  id 'io.github.pacifistmc.forgix' version '2.0.0-SNAPSHOT.5.1'
+  id 'me.modmuss50.mod-publish-plugin' version '0.8.4'
 }
 
 architectury {
@@ -12,6 +14,38 @@ architectury {
 allprojects {
   group = rootProject.maven_group
   version = rootProject.mod_version + '+' + rootProject.minecraft_version
+}
+
+forgix {
+  autoRun = true
+  silence = true
+  archiveClassifier = ''
+}
+
+publishMods {
+  def forgixDir = rootProject.layout.buildDirectory.dir('forgix').get().asFile
+  file = new File(forgixDir, "${rootProject.archives_name}-${project.version}.jar")
+  changelog = new File('CHANGELOG.md').getText('UTF-8')
+  type = STABLE
+  modLoaders.add('fabric')
+  modLoaders.add('neoforge')
+
+  modrinth {
+    accessToken = providers.environmentVariable('MODRINTH_TOKEN')
+    projectId = 'r52WhXUn'
+    requires('architectury-api')
+    minecraftVersions.add(rootProject.minecraft_version)
+  }
+
+  curseforge {
+    accessToken = providers.environmentVariable('CURSEFORGE_TOKEN')
+    projectId = '1273776'
+    clientRequired = true
+    serverRequired = true
+    requires('architectury-api')
+    javaVersions.add(JavaVersion.VERSION_21)
+    minecraftVersions.add(rootProject.minecraft_version)
+  }
 }
 
 // Delete unnecessary copied JAR files
