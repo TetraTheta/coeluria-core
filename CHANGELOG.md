@@ -1,1 +1,1 @@
-* Allow pasting long command in Chat
+* Remove recipe group
