@@ -14,21 +14,21 @@ logoFile = "assets/coeluriacore/icon.png"
 [[dependencies.coeluriacore]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.1,)"
+versionRange = "[21.7,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.coeluriacore]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.1,)"
+versionRange = "[1.21.7,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.coeluriacore]]
 modId = "architectury"
 type = "required"
-versionRange = "[13.0.8,)"
+versionRange = "[17.0.6,)"
 ordering = "AFTER"
 side = "BOTH"
 
