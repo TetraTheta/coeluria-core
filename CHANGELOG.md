@@ -1,1 +1,1 @@
-* Allow pasting long command in Chat
+* Updated to Minecraft 1.21.7
